@@ -1,0 +1,100 @@
+2022-07-24 03:10:12
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41NUMBER_OF_PROCESSORS 4
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41NUMBER_OF_PROCESSORS 4
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41NUMBER_OF_PROCESSORS 4
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41
+Beginning Test, file ESMC_FieldSMMFromFileUTest.C, line 41NUMBER_OF_PROCESSORS 4
+[Orion-02-51:239905:0:239905] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-02-51:239903:0:239903] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-02-51:239904:0:239904] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-02-51:239906:0:239906] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+==== backtrace (tid: 239906) ====
+ 0 0x00000000011c97d4 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x00000000013b0c51 ESMCI::MeshCap::meshcreatenodedistgrid()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 2 0x00000000013f7077 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 3 0x00000000020cbf18 esmf_meshmod_esmf_meshcreatefrompointer_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 4 0x0000000001efbc00 esmf_gridutilmod_esmf_gridtomesh_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 5 0x0000000001da166b esmf_fieldregridmod_b_or_p_gridtomesh_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:3228
+ 6 0x0000000001d9ca4b esmf_fieldregridmod_getmeshwithnodesonfieldloc_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:1346
+ 7 0x0000000001d9a399 esmf_fieldregridmod_esmf_fieldregridstorenx_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:971
+ 8 0x0000000001bc0cb9 f_esmf_regridstorefile_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMF_Field_C.F90:1279
+ 9 0x000000000101689c ESMCI::Field::regridstorefile()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMCI_Field.C:1577
+10 0x0000000000bc6e71 ESMC_FieldRegridStoreFile()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMC_Field.C:513
+11 0x00000000004052db main()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Field/tests/ESMC_FieldSMMFromFileUTest.C:193
+12 0x0000000000022495 __libc_start_main()  ???:0
+13 0x00000000004048c9 _start()  ???:0
+=================================
+[Orion-02-51:239906] *** Process received signal ***
+[Orion-02-51:239906] Signal: Segmentation fault (11)
+[Orion-02-51:239906] Signal code:  (-6)
+[Orion-02-51:239906] Failing at address: 0x20e50003a922
+[Orion-02-51:239906] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7f3e2db6b5d0]
+[Orion-02-51:239906] [ 1] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34)[0x7f3e2afd67d4]
+[Orion-02-51:239906] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x81)[0x7f3e2b1bdc51]
+[Orion-02-51:239906] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0x177)[0x7f3e2b204077]
+[Orion-02-51:239906] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefrompointer_+0x78)[0x7f3e2bed8f18]
+[Orion-02-51:239906] [ 5] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_gridutilmod_esmf_gridtomesh_+0x550)[0x7f3e2bd08c00]
+[Orion-02-51:239906] [ 6] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_fieldregridmod_b_or_p_gridtomesh_+0x60b)[0x7f3e2bbae66b]
+[Orion-02-51:239906] [ 7] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_fieldregridmod_getmeshwithnodesonfieldloc_+0x54b)[0x7f3e2bba9a4b]
+[Orion-02-51:239906] [ 8] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_fieldregridmod_esmf_fieldregridstorenx_+0x1029)[0x7f3e2bba7399]
+[Orion-02-51:239906] [ 9] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(f_esmf_regridstorefile_+0x899)[0x7f3e2b9cdcb9]
+[Orion-02-51:239906] [10] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI5Field15regridstorefileEPS0_S1_PKcP18ESMC_InterArrayIntS5_PPNS_11RouteHandleEP22ESMC_RegridMethod_FlagP20ESMC_PoleMethod_FlagPiP18ESMC_LineType_FlagP18ESMC_NormType_FlagP24ESMC_UnmappedAction_FlagP12ESMC_LogicalSL_P18ESMC_FileMode_FlagS3_S3_P20ESMC_FileFormat_FlagSP_SL_S1_S1_+0x5ac)[0x7f3e2ae2389c]
+[Orion-02-51:239906] [11] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(ESMC_FieldRegridStoreFile+0x1c1)[0x7f3e2a9d3e71]
+[Orion-02-51:239906] [12] ./ESMC_FieldSMMFromFileUTest[0x4052db]
+[Orion-02-51:239906] [13] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f3e266e2495]
+[Orion-02-51:239906] [14] ./ESMC_FieldSMMFromFileUTest[0x4048c9]
+[Orion-02-51:239906] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 239906 on node Orion-02-51 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
