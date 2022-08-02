@@ -1,0 +1,117 @@
+2022-08-02 02:59:05
+  Beginning Test, file ESMF_MeshFileIOUTest.F90, line 65
+  NUMBER_OF_PROCESSORS            4
+  Beginning Test, file ESMF_MeshFileIOUTest.F90, line 65
+  NUMBER_OF_PROCESSORS            4
+  Beginning Test, file ESMF_MeshFileIOUTest.F90, line 65
+  NUMBER_OF_PROCESSORS            4
+  Beginning Test, file ESMF_MeshFileIOUTest.F90, line 65
+  NUMBER_OF_PROCESSORS            4
+[Orion-01-48:62215:0:62215] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-01-48:62217:0:62217] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-01-48:62218:0:62218] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-01-48:62216:0:62216] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+==== backtrace (tid:  62216) ====
+ 0 0x00000000011c9b44 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x00000000013b0fc1 ESMCI::MeshCap::meshcreatenodedistgrid()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 2 0x00000000013f73e7 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 3 0x00000000020c50d6 esmf_meshmod_esmf_meshcreatefromfile_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:1978
+ 4 0x0000000000407e15 esmf_meshfileioutest_test_mesh_create_from_med_em_file()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/tests/ESMF_MeshFileIOUTest.F90:398
+ 5 0x00000000004065e6 MAIN_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/tests/ESMF_MeshFileIOUTest.F90:87
+ 6 0x0000000000406383 main()  ???:0
+ 7 0x0000000000022495 __libc_start_main()  ???:0
+ 8 0x0000000000406289 _start()  ???:0
+=================================
+[Orion-01-48:62216] *** Process received signal ***
+[Orion-01-48:62216] Signal: Segmentation fault (11)
+[Orion-01-48:62216] Signal code:  (-6)
+[Orion-01-48:62216] Failing at address: 0x20e50000f308
+[Orion-01-48:62216] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7ff11a1cf5d0]
+[Orion-01-48:62216] [ 1] ==== backtrace (tid:  62218) ====
+ 0 0x00000000011c9b44 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x00000000013b0fc1 ESMCI::MeshCap::meshcreatenodedistgrid()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 2 0x00000000013f73e7 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 3 0x00000000020c50d6 esmf_meshmod_esmf_meshcreatefromfile_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:1978
+ 4 0x0000000000407e15 esmf_meshfileioutest_test_mesh_create_from_med_em_file()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/tests/ESMF_MeshFileIOUTest.F90:398
+ 5 0x00000000004065e6 MAIN_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/src/Infrastructure/Mesh/tests/ESMF_MeshFileIOUTest.F90:87
+ 6 0x0000000000406383 main()  ???:0
+ 7 0x0000000000022495 __libc_start_main()  ???:0
+ 8 0x0000000000406289 _start()  ???:0
+=================================
+[Orion-01-48:62218] *** Process received signal ***
+[Orion-01-48:62218] Signal: Segmentation fault (11)
+[Orion-01-48:62218] Signal code:  (-6)
+[Orion-01-48:62218] Failing at address: 0x20e50000f30a
+[Orion-01-48:62218] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7f8ab7e115d0]
+[Orion-01-48:62218] [ 1] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34)[0x7ff117638b44]
+[Orion-01-48:62216] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34)[0x7f8ab527ab44]
+[Orion-01-48:62218] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x81)[0x7ff11781ffc1]
+[Orion-01-48:62216] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x81)[0x7f8ab5461fc1]
+[Orion-01-48:62218] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0x177)[0x7ff1178663e7]
+[Orion-01-48:62216] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0x177)[0x7f8ab54a83e7]
+[Orion-01-48:62218] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefromfile_+0x396)[0x7ff1185340d6]
+[Orion-01-48:62216] [ 5] ./ESMF_MeshFileIOUTest[0x407e15]
+[Orion-01-48:62216] [ 6] ./ESMF_MeshFileIOUTest[0x4065e6]
+[Orion-01-48:62216] [ 7] ./ESMF_MeshFileIOUTest[0x406383]
+[Orion-01-48:62216] [ 8] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7ff1128bc495]
+[Orion-01-48:62216] [ 9] ./ESMF_MeshFileIOUTest[0x406289]
+[Orion-01-48:62216] *** End of error message ***
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_develop/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefromfile_+0x396)[0x7f8ab61760d6]
+[Orion-01-48:62218] [ 5] ./ESMF_MeshFileIOUTest[0x407e15]
+[Orion-01-48:62218] [ 6] ./ESMF_MeshFileIOUTest[0x4065e6]
+[Orion-01-48:62218] [ 7] ./ESMF_MeshFileIOUTest[0x406383]
+[Orion-01-48:62218] [ 8] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f8ab04fe495]
+[Orion-01-48:62218] [ 9] ./ESMF_MeshFileIOUTest[0x406289]
+[Orion-01-48:62218] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 62216 on node Orion-01-48 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+2 total processes killed (some possibly by mpirun during cleanup)
