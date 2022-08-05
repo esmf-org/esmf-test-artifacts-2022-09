@@ -1,0 +1,94 @@
+2022-08-05 02:59:43
+  Beginning Test, file ESMF_XGridMaskingUTest.F90, line 50
+  Beginning Test, file ESMF_XGridMaskingUTest.F90, line 50
+  NUMBER_OF_PROCESSORS            2
+  NUMBER_OF_PROCESSORS            2
+ Starting test2d_masking_single
+ Starting test2d_masking_single
+[Orion-03-34:194565:0:194565] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[Orion-03-34:194566:0:194566] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+==== backtrace (tid: 194565) ====
+ 0 0x000000000071d393 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x0000000000875591 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:248
+ 2 0x0000000000f7ff5c esmf_meshmod_esmf_meshcreatefrompointer_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 3 0x0000000000e61732 esmf_gridutilmod_esmf_gridtomesh_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 4 0x000000000100dc16 esmf_xgridcreatemod_esmf_xgridcreate_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/src/ESMF_XGridCreate.F90:950
+ 5 0x000000000040658a esmf_xgridmaskingutest_test2d_masking_single()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/tests/ESMF_XGridMaskingUTest.F90:126
+ 6 0x0000000000405a8a MAIN_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/tests/ESMF_XGridMaskingUTest.F90:57
+ 7 0x00000000004059b3 main()  ???:0
+ 8 0x0000000000022495 __libc_start_main()  ???:0
+ 9 0x00000000004058b9 _start()  ???:0
+=================================
+[Orion-03-34:194565] *** Process received signal ***
+[Orion-03-34:194565] Signal: Segmentation fault (11)
+[Orion-03-34:194565] Signal code:  (-6)
+[Orion-03-34:194565] Failing at address: 0x20e50002f805
+==== backtrace (tid: 194566) ====
+ 0 0x000000000071d393 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x0000000000875591 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:248
+ 2 0x0000000000f7ff5c esmf_meshmod_esmf_meshcreatefrompointer_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+[Orion-03-34:194565] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7f6f61dda5d0]
+ 3 0x0000000000e61732 esmf_gridutilmod_esmf_gridtomesh_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 4 0x000000000100dc16 esmf_xgridcreatemod_esmf_xgridcreate_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/src/ESMF_XGridCreate.F90:950
+ 5 0x000000000040658a esmf_xgridmaskingutest_test2d_masking_single()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/tests/ESMF_XGridMaskingUTest.F90:126
+ 6 0x0000000000405a8a MAIN_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/src/Infrastructure/XGrid/tests/ESMF_XGridMaskingUTest.F90:57
+ 7 0x00000000004059b3 main()  ???:0
+ 8 0x0000000000022495 __libc_start_main()  ???:0
+ 9 0x00000000004058b9 _start()  ???:0
+=================================
+[Orion-03-34:194565] [ 1] [Orion-03-34:194566] *** Process received signal ***
+[Orion-03-34:194566] Signal: Segmentation fault (11)
+[Orion-03-34:194566] Signal code:  (-6)
+[Orion-03-34:194566] Failing at address: 0x20e50002f806
+[Orion-03-34:194566] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7f04ded2a5d0]
+[Orion-03-34:194566] [ 1] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x33)[0x7f6f60589393]
+[Orion-03-34:194565] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x33)[0x7f04dd4d9393]
+[Orion-03-34:194566] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0xa1)[0x7f6f606e1591]
+[Orion-03-34:194565] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0xa1)[0x7f04dd631591]
+[Orion-03-34:194566] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefrompointer_+0x4c)[0x7f6f60debf5c]
+[Orion-03-34:194565] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefrompointer_+0x4c)[0x7f04ddd3bf5c]
+[Orion-03-34:194566] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_gridutilmod_esmf_gridtomesh_+0x352)[0x7f6f60ccd732]
+[Orion-03-34:194565] [ 5] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_gridutilmod_esmf_gridtomesh_+0x352)[0x7f04ddc1d732]
+[Orion-03-34:194566] [ 5] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_xgridcreatemod_esmf_xgridcreate_+0x2e36)[0x7f6f60e79c16]
+[Orion-03-34:194565] [ 6] ./ESMF_XGridMaskingUTest[0x40658a]
+[Orion-03-34:194565] [ 7] ./ESMF_XGridMaskingUTest[0x405a8a]
+[Orion-03-34:194565] [ 8] ./ESMF_XGridMaskingUTest[0x4059b3]
+[Orion-03-34:194565] [ 9] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_O_develop/esmf/lib/libO/Linux.pgi.64.openmpi.default/libesmf.so(esmf_xgridcreatemod_esmf_xgridcreate_+0x2e36)[0x7f04dddc9c16]
+[Orion-03-34:194566] [ 6] ./ESMF_XGridMaskingUTest[0x40658a]
+[Orion-03-34:194566] [ 7] ./ESMF_XGridMaskingUTest[0x405a8a]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f6f5c2b9495]
+[Orion-03-34:194565] [10] [Orion-03-34:194566] [ 8] ./ESMF_XGridMaskingUTest[0x4059b3]
+[Orion-03-34:194566] ./ESMF_XGridMaskingUTest[0x4058b9]
+[Orion-03-34:194565] *** End of error message ***
+[ 9] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f04d9209495]
+[Orion-03-34:194566] [10] ./ESMF_XGridMaskingUTest[0x4058b9]
+[Orion-03-34:194566] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 194566 on node Orion-03-34 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
