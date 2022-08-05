@@ -1,0 +1,110 @@
+2022-08-05 03:09:17
+ ESMF_LogWrite(): ESMF_Log not open -- cannot ESMF_LogWrite().  Log message = 
+ epochInit
+Beginning Test, file ESMC_FieldGridRegrid2UTest.C, line 70
+Beginning Test, file ESMC_FieldGridRegrid2UTest.C, line 70NUMBER_OF_PROCESSORS 1
+PASS GridCreate, ESMC_FieldGridRegrid2UTest.C, line 119
+PASS GridAddCoord, ESMC_FieldGridRegrid2UTest.C, line 134
+PASS GridAddItem, ESMC_FieldGridRegrid2UTest.C, line 144
+PASS GridGetItem - mask, ESMC_FieldGridRegrid2UTest.C, line 155
+PASS GridGetCoord - X, ESMC_FieldGridRegrid2UTest.C, line 182
+PASS GridGetCoord - Y, ESMC_FieldGridRegrid2UTest.C, line 202
+Masked value at [1.500000,0.500000]
+Masked value at [1.500000,1.500000]
+Masked value at [1.500000,2.500000]
+Masked value at [1.500000,3.500000]
+
+Destination Grid coords: 
+[0.500000,0.500000]
+[1.500000,0.500000]
+[2.500000,0.500000]
+[3.500000,0.500000]
+[0.500000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[3.500000,1.500000]
+[0.500000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[3.500000,2.500000]
+[0.500000,3.500000]
+[1.500000,3.500000]
+[2.500000,3.500000]
+[3.500000,3.500000]
+
+PASS MeshCreate, ESMC_FieldGridRegrid2UTest.C, line 296
+PASS MeshAddNodes, ESMC_FieldGridRegrid2UTest.C, line 304
+PASS MeshAddElements, ESMC_FieldGridRegrid2UTest.C, line 318
+PASS MeshGetNodeCount, ESMC_FieldGridRegrid2UTest.C, line 328
+num_node = 16
+num_node_out=16
+PASS MeshGetElementCount, ESMC_FieldGridRegrid2UTest.C, line 339
+num_elem = 9
+num_elem_out=9
+
+Source Mesh coords: 
+[0.000000,0.000000]
+[1.500000,0.000000]
+[2.500000,0.000000]
+[4.000000,0.000000]
+[0.000000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[4.000000,1.500000]
+[0.000000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[4.000000,2.500000]
+[0.000000,4.000000]
+[1.500000,4.000000]
+[2.500000,4.000000]
+[4.000000,4.000000]
+
+PASS Create ESMC_Field object from a Grid via TypeKind, ESMC_FieldGridRegrid2UTest.C, line 363
+[Orion-03-46:457267:0:457267] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+
+/work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C: [ ESMCI::LogErr::MsgFoundError() ]
+      ...
+      583 {
+      584     bool result=false;
+      585 #ifdef ESMC_SUCCESSDEFAULT_ON
+==>   586     if (rcToReturn != ESMC_NULL_POINTER) *rcToReturn=ESMF_SUCCESS;
+      587 #endif
+      588     if (trace) {
+      589         Write(ESMC_METHOD,ESMC_LOGMSG_TRACE,
+
+==== backtrace (tid: 457267) ====
+ 0 0x00000000011ceef4 ESMCI::LogErr::MsgFoundError()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 1 0x00000000013b6271 ESMCI::MeshCap::meshcreatenodedistgrid()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 2 0x00000000013fc697 c_esmc_meshcreatenodedistgrid_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 3 0x00000000020d5fcb esmf_meshmod_esmf_meshcreatefromintptr_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3158
+ 4 0x0000000001bcc755 f_esmf_fieldcreatemeshtk_()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Field/interface/ESMF_Field_C.F90:319
+ 5 0x00000000010191bb ESMCI::Field::create()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Field/interface/ESMCI_Field.C:759
+ 6 0x0000000000bcb759 ESMC_FieldCreateMeshTypeKind()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Field/interface/ESMC_Field.C:145
+ 7 0x00000000004064fc main()  /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/src/Infrastructure/Field/tests/ESMC_FieldGridRegrid2UTest.C:370
+ 8 0x0000000000022495 __libc_start_main()  ???:0
+ 9 0x0000000000404e89 _start()  ???:0
+=================================
+[Orion-03-46:457267] *** Process received signal ***
+[Orion-03-46:457267] Signal: Segmentation fault (11)
+[Orion-03-46:457267] Signal code:  (-6)
+[Orion-03-46:457267] Failing at address: 0x20e50006fa33
+[Orion-03-46:457267] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7fab9dea25d0]
+[Orion-03-46:457267] [ 1] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34)[0x7fab9b34def4]
+[Orion-03-46:457267] [ 2] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x81)[0x7fab9b535271]
+[Orion-03-46:457267] [ 3] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0x177)[0x7fab9b57b697]
+[Orion-03-46:457267] [ 4] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefromintptr_+0xeb)[0x7fab9c254fcb]
+[Orion-03-46:457267] [ 5] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(f_esmf_fieldcreatemeshtk_+0x245)[0x7fab9bd4b755]
+[Orion-03-46:457267] [ 6] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(_ZN5ESMCI5Field6createE9ESMC_Mesh18ESMC_TypeKind_Flag17ESMC_MeshLoc_FlagP18ESMC_InterArrayIntS5_S5_PKcPi+0x68b)[0x7fab9b1981bb]
+[Orion-03-46:457267] [ 7] /work/noaa/da/mpotts/sandbox/pgi_2019_openmpi_g_feature_large-messages/esmf/lib/libg/Linux.pgi.64.openmpi.default/libesmf.so(ESMC_FieldCreateMeshTypeKind+0x69)[0x7fab9ad4a759]
+[Orion-03-46:457267] [ 8] ./ESMC_FieldGridRegrid2UTest[0x4064fc]
+[Orion-03-46:457267] [ 9] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fab96a54495]
+[Orion-03-46:457267] [10] ./ESMC_FieldGridRegrid2UTest[0x404e89]
+[Orion-03-46:457267] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 457267 on node Orion-03-46 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
