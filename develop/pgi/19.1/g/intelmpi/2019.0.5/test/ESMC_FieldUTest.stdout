@@ -1,0 +1,28 @@
+2022-08-23 03:47:31
+Beginning Test, file ESMC_FieldUTest.C, line 76
+Beginning Test, file ESMC_FieldUTest.C, line 76NUMBER_OF_PROCESSORS 1
+PASS MeshCreate, ESMC_FieldUTest.C, line 88
+PASS MeshVTKHeader, ESMC_FieldUTest.C, line 97
+PASS MeshVTKBody, ESMC_FieldUTest.C, line 116
+PASS MeshAddNodes, ESMC_FieldUTest.C, line 136
+PASS MeshAddElements, ESMC_FieldUTest.C, line 146
+PASS ArraySpecSet, ESMC_FieldUTest.C, line 154
+PASS Set up gridToFieldMap, ESMC_FieldUTest.C, line 164
+PASS Set up ungriddedLBound, ESMC_FieldUTest.C, line 175
+PASS Set up ungriddedUBound, ESMC_FieldUTest.C, line 186
+[h13c37:155201:0:155201] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+==== backtrace (tid: 155201) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7fbeb esmf_meshmod_esmf_meshcreatefromintptr_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3158
+ 5 0x0000000001c7f984 f_esmf_fieldcreatemeshas_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMF_Field_C.F90:236
+ 6 0x0000000000f0f028 ESMCI::Field::create()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMCI_Field.C:620
+ 7 0x000000000168f6b2 ESMC_FieldCreateMeshArraySpec()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMC_Field.C:116
+ 8 0x0000000000401dc5 main()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/tests/ESMC_FieldUTest.C:193
+ 9 0x0000000000022555 __libc_start_main()  ???:0
+10 0x00000000004012e9 _start()  ???:0
+=================================
+srun: error: h13c37: task 0: Segmentation fault (core dumped)
+srun: launch/slurm: _step_signal: Terminating StepId=35028714.115
