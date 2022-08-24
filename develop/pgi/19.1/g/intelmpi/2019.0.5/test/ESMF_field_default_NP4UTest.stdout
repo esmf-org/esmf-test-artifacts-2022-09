@@ -1,0 +1,144 @@
+2022-08-24 03:49:23
+  Beginning Test, file ESMF_TestHarnessUTest.F90, line 74
+  NUMBER_OF_PROCESSORS            4
+command line arg count =    4
+  Beginning Test, file ESMF_TestHarnessUTest.F90, line 74
+  NUMBER_OF_PROCESSORS            4
+  Beginning Test, file ESMF_TestHarnessUTest.F90, line 74
+  NUMBER_OF_PROCESSORS            4
+  Beginning Test, file ESMF_TestHarnessUTest.F90, line 74
+  NUMBER_OF_PROCESSORS            4
+command line arg [ 1] =    5:-case
+command line arg [ 2] =   21:field_default_test.rc
+command line arg [ 3] =    4:-xml
+command line arg [ 4] =   17:field_default.xml
+argindex (-path) =   -1
+argindex (-case) =    1
+argindex (-xml) =    3
+Path Length =     1
+Path = .
+Config File = field_default_test.rc
+Run Flag =  1
+XML Flag =  1
+XML File = field_default.xml
+   0Path = .
+   0Config File = field_default_test.rc
+   0Run Flag =  1
+   0XML Flag =  1
+   0XML File = field_default.xml
+   2Path = .
+   2Config File = field_default_test.rc
+   3Path = .
+   3Config File = field_default_test.rc
+   3Run Flag =  1
+   1Path = .
+   1Config File = field_default_test.rc
+   1Run Flag =  1
+   1XML Flag =  1
+   1XML File = field_default.xml
+   2Run Flag =  1
+   2XML Flag =  1
+   2XML File = field_default.xml
+   3XML Flag =  1
+   3XML File = field_default.xml
+ running nonexhaustive tests
+ --------------------------------------- 
+ Start of test harness test for class FIELD
+ --------------------------------------- 
+ Opening Dist specifier file  ./field_default_dist_2D.rc
+ Opening Dist specifier file  ./field_default_dist_2D.rc
+ Opening Dist specifier file  ./field_default_dist_2D.rc
+ Opening Dist specifier file  ./field_default_dist_2D.rc
+ Opening Grid specifier file  ./field_default_grid_2D.rc
+ Opening Grid specifier file  ./field_default_grid_2D.rc
+ Opening Grid specifier file  ./field_default_grid_2D.rc
+ Opening Grid specifier file  ./field_default_grid_2D.rc
+  read grid specification for regridding test
+  read grid specification for regridding test
+  read grid specification for regridding test
+  read grid specification for regridding test
+ Problem Descriptor String [B1G1;B2G2] =B=> [B1G1;B2G2]
+ ( grid config, distribution config, Grid file, Distribution file)
+ (1,1,1,1) string=[B1{1}G1{20};B2{1}G2{20}]=B=>[B1{1}G1{50};B2{1}G2{50}]
+                
+                
+                
+                
+ -----------------======field regrid test==========-----------------------
+field regrid with string [B1G1;B2G2] =B=> [B1G1;B2G2] with entry 1 of file ./field_default_dist_2D.rc and entry 1 of file ./field_default_grid_2D.rc
+[h10c57:4194 :0:4194] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[h10c57:4195 :0:4195] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[h10c57:4196 :0:4196] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+[h10c57:4197 :0:4197] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+==== backtrace (tid:   4194) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7f9d8 esmf_meshmod_esmf_meshcreatefrompointer_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 5 0x0000000001d62e50 esmf_gridutilmod_esmf_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 6 0x0000000001c656cb esmf_fieldregridmod_b_or_p_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:3228
+ 7 0x0000000001c60aab esmf_fieldregridmod_getmeshwithnodesonfieldloc_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:1346
+ 8 0x0000000001c5e3f9 esmf_fieldregridmod_esmf_fieldregridstorenx_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:971
+ 9 0x000000000040b1ea esmf_testharnessmod_field_regrid_test_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessMod.F90:589
+10 0x000000000046ef96 esmf_test_harness_runtests()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:387
+11 0x000000000046e0e3 MAIN_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:255
+12 0x0000000000404d23 main()  ???:0
+13 0x0000000000022555 __libc_start_main()  ???:0
+14 0x0000000000404c29 _start()  ???:0
+=================================
+==== backtrace (tid:   4196) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7f9d8 esmf_meshmod_esmf_meshcreatefrompointer_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 5 0x0000000001d62e50 esmf_gridutilmod_esmf_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 6 0x0000000001c656cb esmf_fieldregridmod_b_or_p_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:3228
+ 7 0x0000000001c60aab esmf_fieldregridmod_getmeshwithnodesonfieldloc_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:1346
+ 8 0x0000000001c5e3f9 esmf_fieldregridmod_esmf_fieldregridstorenx_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:971
+ 9 0x000000000040b1ea esmf_testharnessmod_field_regrid_test_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessMod.F90:589
+10 0x000000000046ef96 esmf_test_harness_runtests()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:387
+11 0x000000000046e0e3 MAIN_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:255
+12 0x0000000000404d23 main()  ???:0
+13 0x0000000000022555 __libc_start_main()  ???:0
+14 0x0000000000404c29 _start()  ???:0
+=================================
+==== backtrace (tid:   4197) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7f9d8 esmf_meshmod_esmf_meshcreatefrompointer_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 5 0x0000000001d62e50 esmf_gridutilmod_esmf_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 6 0x0000000001c656cb esmf_fieldregridmod_b_or_p_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:3228
+ 7 0x0000000001c60aab esmf_fieldregridmod_getmeshwithnodesonfieldloc_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:1346
+ 8 0x0000000001c5e3f9 esmf_fieldregridmod_esmf_fieldregridstorenx_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:971
+ 9 0x000000000040b1ea esmf_testharnessmod_field_regrid_test_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessMod.F90:589
+10 0x000000000046ef96 esmf_test_harness_runtests()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:387
+11 0x000000000046e0e3 MAIN_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:255
+12 0x0000000000404d23 main()  ???:0
+13 0x0000000000022555 __libc_start_main()  ???:0
+14 0x0000000000404c29 _start()  ???:0
+=================================
+==== backtrace (tid:   4195) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7f9d8 esmf_meshmod_esmf_meshcreatefrompointer_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3091
+ 5 0x0000000001d62e50 esmf_gridutilmod_esmf_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/GridUtil/interface/ESMF_GridUtil.F90:453
+ 6 0x0000000001c656cb esmf_fieldregridmod_b_or_p_gridtomesh_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:3228
+ 7 0x0000000001c60aab esmf_fieldregridmod_getmeshwithnodesonfieldloc_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:1346
+ 8 0x0000000001c5e3f9 esmf_fieldregridmod_esmf_fieldregridstorenx_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/src/ESMF_FieldRegrid.F90:971
+ 9 0x000000000040b1ea esmf_testharnessmod_field_regrid_test_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessMod.F90:589
+10 0x000000000046ef96 esmf_test_harness_runtests()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:387
+11 0x000000000046e0e3 MAIN_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/test_harness/src/ESMF_TestHarnessUTest.F90:255
+12 0x0000000000404d23 main()  ???:0
+13 0x0000000000022555 __libc_start_main()  ???:0
+14 0x0000000000404c29 _start()  ???:0
+=================================
+srun: error: h10c57: tasks 0-2: Segmentation fault (core dumped)
+srun: launch/slurm: _step_signal: Terminating StepId=35061161.145
+slurmstepd: error: *** STEP 35061161.145 ON h10c57 CANCELLED AT 2022-08-24T04:33:13 ***
+srun: error: h10c57: task 3: Segmentation fault (core dumped)
