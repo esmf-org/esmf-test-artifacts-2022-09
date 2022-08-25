@@ -1,0 +1,1023 @@
+2022-08-25 02:52:32
+20220825 031554.966 INFO             PET0 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET0 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.966 INFO             PET0 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.966 INFO             PET0 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.966 INFO             PET0 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.966 INFO             PET0 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET0 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.966 INFO             PET0 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.966 INFO             PET0 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.966 INFO             PET0 ESMF_COMM                   : intelmpi
+20220825 031554.966 INFO             PET0 ESMF_MOAB                   : enabled
+20220825 031554.966 INFO             PET0 ESMF_LAPACK                 : enabled
+20220825 031554.966 INFO             PET0 ESMF_NETCDF                 : enabled
+20220825 031554.966 INFO             PET0 ESMF_PNETCDF                : disabled
+20220825 031554.966 INFO             PET0 ESMF_PIO                    : enabled
+20220825 031554.966 INFO             PET0 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET0 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET0 esmfComm=intelmpi
+20220825 031554.967 INFO             PET0 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET0 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET0 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET0 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET0 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET0 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET0 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET0 PE=2 SSI=0 SSIPE=2
+20220825 031554.967 INFO             PET0 PE=3 SSI=0 SSIPE=3
+20220825 031554.967 INFO             PET0 PE=4 SSI=0 SSIPE=4
+20220825 031554.967 INFO             PET0 PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET0 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.968 INFO             PET0 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET0 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET0 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET0 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET0 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET0 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET0 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET0 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET0 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET0 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET0 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET0 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET0 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET0 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET0 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET0 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET0 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET0 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET0 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET0 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET0 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET0 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET0 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET0 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET0 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET0 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET0 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET0 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET0 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET0 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET0 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET0 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET0 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET0 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET0 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET0 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET0 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET0 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET0 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET0 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET0 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET0 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET0 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET0 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET0 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET0 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET0 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET0 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET0 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET0 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET0 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET0 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET0 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET0 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET0 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET0 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET0 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET0 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET0 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET0 main: vm located at: 0x20819d0
+20220825 031554.968 INFO             PET0 main: petCount=6 localPet=0 mypthid=47910322433856 currentSsiPe=40
+20220825 031554.968 INFO             PET0 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET0 main:  SSIPE=0
+20220825 031554.968 INFO             PET0 main:  SSIPE=40
+20220825 031554.968 INFO             PET0 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET0 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET0 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET0 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET0 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET0 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET0 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET0 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET0 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET0 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.968 INFO             PET0 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET0 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET0 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET0 Executing 'userm1_register'
+20220825 031554.969 INFO             PET0 Executing 'userm2_setvm'
+20220825 031554.970 INFO             PET0 Executing 'userm2_register'
+20220825 031554.970 INFO             PET0 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET0 model1: vm located at: 0x20dca50
+20220825 031554.970 INFO             PET0 model1: petCount=6 localPet=0 mypthid=47910322433856 currentSsiPe=0
+20220825 031554.970 INFO             PET0 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET0 model1:  SSIPE=0
+20220825 031554.970 INFO             PET0 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET0 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET0 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET0 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET0 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET0 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET0 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET0 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET0 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET0 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET0 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET0 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET0 Entering 'user1_run'
+20220825 031554.973 INFO             PET0  user1_run: on SSIPE:            0  Filling data lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.165 INFO             PET0  user1_run: on SSIPE:            0  Filling data lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.252 INFO             PET0  user1_run: on SSIPE:            0  Filling data lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.339 INFO             PET0  user1_run: on SSIPE:            0  Filling data lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.426 INFO             PET0  user1_run: on SSIPE:            0  Filling data lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.513 INFO             PET0 Exiting 'user1_run'
+20220825 031555.519 INFO             PET0 Entering 'user2_run'
+20220825 031555.519 INFO             PET0 model2: --- VMK::log() start -------------------------------------
+20220825 031555.519 INFO             PET0 model2: vm located at: 0x20dd440
+20220825 031555.519 INFO             PET0 model2: petCount=1 localPet=0 mypthid=47910322433856 currentSsiPe=0
+20220825 031555.519 INFO             PET0 model2: Current system level affinity pinning for local PET:
+20220825 031555.519 INFO             PET0 model2:  SSIPE=0
+20220825 031555.519 INFO             PET0 model2: Current system level OMP_NUM_THREADS setting for local PET: 6
+20220825 031555.519 INFO             PET0 model2: ssiCount=1 localSsi=0
+20220825 031555.519 INFO             PET0 model2: mpionly=0 threadsflag=0
+20220825 031555.519 INFO             PET0 model2: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031555.519 INFO             PET0 model2: PET=0 lpid=0 tid=0 pid=0 peCount=6 accCount=0
+20220825 031555.519 INFO             PET0 model2:  PE=0 SSI=0 SSIPE=0
+20220825 031555.519 INFO             PET0 model2:  PE=1 SSI=0 SSIPE=1
+20220825 031555.519 INFO             PET0 model2:  PE=2 SSI=0 SSIPE=2
+20220825 031555.519 INFO             PET0 model2:  PE=3 SSI=0 SSIPE=3
+20220825 031555.519 INFO             PET0 model2:  PE=4 SSI=0 SSIPE=4
+20220825 031555.519 INFO             PET0 model2:  PE=5 SSI=0 SSIPE=5
+20220825 031555.519 INFO             PET0 model2: --- VMK::log() end ---------------------------------------
+20220825 031555.519 INFO             PET0  user2_run: ssiLocalDeCount=           6
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           0  on SSIPE:            0  Testing data for localDe =           0  DE=           0  lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           4  on SSIPE:            4  Testing data for localDe =           4  DE=           4  lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           2  on SSIPE:            2  Testing data for localDe =           2  DE=           2  lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           3  on SSIPE:            3  Testing data for localDe =           3  DE=           3  lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           5  on SSIPE:            5  Testing data for localDe =           5  DE=           5  lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.519 INFO             PET0  user2_run: OpenMP thread:           1  on SSIPE:            1  Testing data for localDe =           1  DE=           1  lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           3  on SSIPE:            3  Testing data for localDe =           3  DE=           3  lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           4  on SSIPE:            4  Testing data for localDe =           4  DE=           4  lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           0  on SSIPE:            0  Testing data for localDe =           0  DE=           0  lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           2  on SSIPE:            2  Testing data for localDe =           2  DE=           2  lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           1  on SSIPE:            1  Testing data for localDe =           1  DE=           1  lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.677 INFO             PET0  user2_run: OpenMP thread:           5  on SSIPE:            5  Testing data for localDe =           5  DE=           5  lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           3  on SSIPE:            3  Testing data for localDe =           3  DE=           3  lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           4  on SSIPE:            4  Testing data for localDe =           4  DE=           4  lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           0  on SSIPE:            0  Testing data for localDe =           0  DE=           0  lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           2  on SSIPE:            2  Testing data for localDe =           2  DE=           2  lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           5  on SSIPE:            5  Testing data for localDe =           5  DE=           5  lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.792 INFO             PET0  user2_run: OpenMP thread:           1  on SSIPE:            1  Testing data for localDe =           1  DE=           1  lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           4  on SSIPE:            4  Testing data for localDe =           4  DE=           4  lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           3  on SSIPE:            3  Testing data for localDe =           3  DE=           3  lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           0  on SSIPE:            0  Testing data for localDe =           0  DE=           0  lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           2  on SSIPE:            2  Testing data for localDe =           2  DE=           2  lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           1  on SSIPE:            1  Testing data for localDe =           1  DE=           1  lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.906 INFO             PET0  user2_run: OpenMP thread:           5  on SSIPE:            5  Testing data for localDe =           5  DE=           5  lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           4  on SSIPE:            4  Testing data for localDe =           4  DE=           4  lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           0  on SSIPE:            0  Testing data for localDe =           0  DE=           0  lbound:           1           1           1  ubound:        1667        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           2  on SSIPE:            2  Testing data for localDe =           2  DE=           2  lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           5  on SSIPE:            5  Testing data for localDe =           5  DE=           5  lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           3  on SSIPE:            3  Testing data for localDe =           3  DE=           3  lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031556.020 INFO             PET0  user2_run: OpenMP thread:           1  on SSIPE:            1  Testing data for localDe =           1  DE=           1  lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031556.135 INFO             PET0  user2_run: All data correct.
+20220825 031556.135 INFO             PET0 Exiting 'user2_run'
+20220825 031556.264 INFO             PET0  NUMBER_OF_PROCESSORS           6
+20220825 031556.264 INFO             PET0  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.264 INFO             PET0 Finalizing ESMF
+20220825 031554.966 INFO             PET1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET1 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.966 INFO             PET1 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.966 INFO             PET1 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.966 INFO             PET1 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.966 INFO             PET1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET1 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.966 INFO             PET1 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.966 INFO             PET1 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.966 INFO             PET1 ESMF_COMM                   : intelmpi
+20220825 031554.967 INFO             PET1 ESMF_MOAB                   : enabled
+20220825 031554.967 INFO             PET1 ESMF_LAPACK                 : enabled
+20220825 031554.967 INFO             PET1 ESMF_NETCDF                 : enabled
+20220825 031554.967 INFO             PET1 ESMF_PNETCDF                : disabled
+20220825 031554.967 INFO             PET1 ESMF_PIO                    : enabled
+20220825 031554.967 INFO             PET1 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET1 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET1 esmfComm=intelmpi
+20220825 031554.967 INFO             PET1 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET1 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET1 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET1 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET1 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET1 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET1 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET1 PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET1 PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET1 PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET1 PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET1 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.968 INFO             PET1 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET1 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET1 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET1 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET1 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET1 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET1 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET1 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET1 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET1 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET1 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET1 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET1 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET1 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET1 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET1 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET1 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET1 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET1 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET1 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET1 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET1 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET1 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET1 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET1 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET1 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET1 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET1 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET1 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET1 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET1 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET1 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET1 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET1 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET1 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET1 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET1 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET1 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET1 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET1 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET1 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET1 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET1 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET1 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET1 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET1 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET1 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET1 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET1 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET1 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET1 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET1 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET1 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET1 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET1 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET1 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET1 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET1 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET1 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET1 main: vm located at: 0x21459d0
+20220825 031554.968 INFO             PET1 main: petCount=6 localPet=1 mypthid=47127109893952 currentSsiPe=60
+20220825 031554.968 INFO             PET1 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET1 main:  SSIPE=20
+20220825 031554.968 INFO             PET1 main:  SSIPE=60
+20220825 031554.968 INFO             PET1 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET1 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET1 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET1 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET1 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET1 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET1 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET1 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET1 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET1 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET1 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET1 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.969 INFO             PET1 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.969 INFO             PET1 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.969 INFO             PET1 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.969 INFO             PET1 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.969 INFO             PET1 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET1 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET1 Executing 'userm1_register'
+20220825 031554.969 INFO             PET1 Executing 'userm2_setvm'
+20220825 031554.969 DEBUG            PET1 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.969 DEBUG            PET1 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.970 INFO             PET1 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET1 model1: vm located at: 0x219e9d0
+20220825 031554.970 INFO             PET1 model1: petCount=6 localPet=1 mypthid=47127109893952 currentSsiPe=1
+20220825 031554.970 INFO             PET1 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET1 model1:  SSIPE=1
+20220825 031554.970 INFO             PET1 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET1 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET1 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET1 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET1 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET1 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET1 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET1 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET1 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET1 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET1 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET1 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET1 Entering 'user1_run'
+20220825 031554.973 INFO             PET1  user1_run: on SSIPE:            1  Filling data lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.164 INFO             PET1  user1_run: on SSIPE:            1  Filling data lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.251 INFO             PET1  user1_run: on SSIPE:            1  Filling data lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.338 INFO             PET1  user1_run: on SSIPE:            1  Filling data lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.425 INFO             PET1  user1_run: on SSIPE:            1  Filling data lbound:        1668           1           1  ubound:        3334        1200          10
+20220825 031555.512 INFO             PET1 Exiting 'user1_run'
+20220825 031556.140 INFO             PET1  NUMBER_OF_PROCESSORS           6
+20220825 031556.140 INFO             PET1  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.140 INFO             PET1 Finalizing ESMF
+20220825 031554.965 INFO             PET2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.965 INFO             PET2 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.965 INFO             PET2 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.965 INFO             PET2 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.965 INFO             PET2 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.965 INFO             PET2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.965 INFO             PET2 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.965 INFO             PET2 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.965 INFO             PET2 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.965 INFO             PET2 ESMF_COMM                   : intelmpi
+20220825 031554.966 INFO             PET2 ESMF_MOAB                   : enabled
+20220825 031554.966 INFO             PET2 ESMF_LAPACK                 : enabled
+20220825 031554.966 INFO             PET2 ESMF_NETCDF                 : enabled
+20220825 031554.966 INFO             PET2 ESMF_PNETCDF                : disabled
+20220825 031554.966 INFO             PET2 ESMF_PIO                    : enabled
+20220825 031554.966 INFO             PET2 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET2 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET2 esmfComm=intelmpi
+20220825 031554.967 INFO             PET2 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET2 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET2 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET2 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET2 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET2 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET2 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET2 PE=2 SSI=0 SSIPE=2
+20220825 031554.967 INFO             PET2 PE=3 SSI=0 SSIPE=3
+20220825 031554.967 INFO             PET2 PE=4 SSI=0 SSIPE=4
+20220825 031554.967 INFO             PET2 PE=5 SSI=0 SSIPE=5
+20220825 031554.967 INFO             PET2 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.967 INFO             PET2 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET2 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET2 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET2 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET2 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET2 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET2 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET2 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET2 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET2 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET2 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET2 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET2 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET2 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET2 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET2 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET2 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET2 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET2 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET2 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET2 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET2 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET2 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET2 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET2 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET2 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET2 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET2 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET2 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET2 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET2 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET2 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET2 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET2 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET2 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET2 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET2 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET2 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET2 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET2 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET2 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET2 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET2 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET2 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET2 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET2 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET2 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET2 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET2 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET2 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET2 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET2 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET2 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET2 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET2 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET2 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET2 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET2 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET2 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET2 main: vm located at: 0x22d89d0
+20220825 031554.968 INFO             PET2 main: petCount=6 localPet=2 mypthid=47260580564800 currentSsiPe=1
+20220825 031554.968 INFO             PET2 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET2 main:  SSIPE=1
+20220825 031554.968 INFO             PET2 main:  SSIPE=41
+20220825 031554.968 INFO             PET2 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET2 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET2 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET2 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET2 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET2 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET2 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET2 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET2 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET2 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.968 INFO             PET2 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET2 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET2 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET2 Executing 'userm1_register'
+20220825 031554.969 INFO             PET2 Executing 'userm2_setvm'
+20220825 031554.969 DEBUG            PET2 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.969 DEBUG            PET2 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.970 INFO             PET2 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET2 model1: vm located at: 0x23319d0
+20220825 031554.970 INFO             PET2 model1: petCount=6 localPet=2 mypthid=47260580564800 currentSsiPe=2
+20220825 031554.970 INFO             PET2 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET2 model1:  SSIPE=2
+20220825 031554.970 INFO             PET2 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET2 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET2 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET2 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET2 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET2 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET2 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET2 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET2 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET2 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET2 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET2 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET2 Entering 'user1_run'
+20220825 031554.973 INFO             PET2  user1_run: on SSIPE:            2  Filling data lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.163 INFO             PET2  user1_run: on SSIPE:            2  Filling data lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.250 INFO             PET2  user1_run: on SSIPE:            2  Filling data lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.337 INFO             PET2  user1_run: on SSIPE:            2  Filling data lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.424 INFO             PET2  user1_run: on SSIPE:            2  Filling data lbound:        3335           1           1  ubound:        5001        1200          10
+20220825 031555.517 INFO             PET2 Exiting 'user1_run'
+20220825 031556.139 INFO             PET2  NUMBER_OF_PROCESSORS           6
+20220825 031556.139 INFO             PET2  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.139 INFO             PET2 Finalizing ESMF
+20220825 031554.966 INFO             PET3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.967 INFO             PET3 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.967 INFO             PET3 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.967 INFO             PET3 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.967 INFO             PET3 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.967 INFO             PET3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.967 INFO             PET3 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.967 INFO             PET3 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.967 INFO             PET3 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.967 INFO             PET3 ESMF_COMM                   : intelmpi
+20220825 031554.967 INFO             PET3 ESMF_MOAB                   : enabled
+20220825 031554.967 INFO             PET3 ESMF_LAPACK                 : enabled
+20220825 031554.967 INFO             PET3 ESMF_NETCDF                 : enabled
+20220825 031554.967 INFO             PET3 ESMF_PNETCDF                : disabled
+20220825 031554.967 INFO             PET3 ESMF_PIO                    : enabled
+20220825 031554.967 INFO             PET3 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET3 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET3 esmfComm=intelmpi
+20220825 031554.967 INFO             PET3 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET3 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET3 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET3 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET3 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET3 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET3 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET3 PE=2 SSI=0 SSIPE=2
+20220825 031554.967 INFO             PET3 PE=3 SSI=0 SSIPE=3
+20220825 031554.967 INFO             PET3 PE=4 SSI=0 SSIPE=4
+20220825 031554.967 INFO             PET3 PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET3 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.968 INFO             PET3 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET3 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET3 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET3 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET3 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET3 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET3 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET3 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET3 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET3 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET3 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET3 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET3 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET3 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET3 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET3 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET3 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET3 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET3 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET3 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET3 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET3 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET3 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET3 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET3 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET3 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET3 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET3 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET3 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET3 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET3 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET3 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET3 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET3 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET3 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET3 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET3 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET3 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET3 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET3 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET3 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET3 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET3 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET3 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET3 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET3 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET3 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET3 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET3 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET3 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET3 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET3 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET3 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET3 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET3 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET3 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET3 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET3 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET3 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET3 main: vm located at: 0x27ff9d0
+20220825 031554.968 INFO             PET3 main: petCount=6 localPet=3 mypthid=47295425613632 currentSsiPe=61
+20220825 031554.968 INFO             PET3 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET3 main:  SSIPE=21
+20220825 031554.968 INFO             PET3 main:  SSIPE=61
+20220825 031554.968 INFO             PET3 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET3 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET3 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET3 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET3 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET3 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET3 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET3 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET3 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET3 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.968 INFO             PET3 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET3 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET3 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET3 Executing 'userm1_register'
+20220825 031554.969 INFO             PET3 Executing 'userm2_setvm'
+20220825 031554.969 DEBUG            PET3 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.969 DEBUG            PET3 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.970 INFO             PET3 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET3 model1: vm located at: 0x28589a0
+20220825 031554.970 INFO             PET3 model1: petCount=6 localPet=3 mypthid=47295425613632 currentSsiPe=3
+20220825 031554.970 INFO             PET3 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET3 model1:  SSIPE=3
+20220825 031554.970 INFO             PET3 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET3 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET3 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET3 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET3 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET3 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET3 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET3 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET3 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET3 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET3 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET3 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET3 Entering 'user1_run'
+20220825 031554.973 INFO             PET3  user1_run: on SSIPE:            3  Filling data lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.163 INFO             PET3  user1_run: on SSIPE:            3  Filling data lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.250 INFO             PET3  user1_run: on SSIPE:            3  Filling data lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.337 INFO             PET3  user1_run: on SSIPE:            3  Filling data lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.424 INFO             PET3  user1_run: on SSIPE:            3  Filling data lbound:        5002           1           1  ubound:        6668        1200          10
+20220825 031555.511 INFO             PET3 Exiting 'user1_run'
+20220825 031556.140 INFO             PET3  NUMBER_OF_PROCESSORS           6
+20220825 031556.140 INFO             PET3  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.140 INFO             PET3 Finalizing ESMF
+20220825 031554.965 INFO             PET4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.965 INFO             PET4 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.965 INFO             PET4 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.965 INFO             PET4 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.965 INFO             PET4 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.965 INFO             PET4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.965 INFO             PET4 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.965 INFO             PET4 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.965 INFO             PET4 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.965 INFO             PET4 ESMF_COMM                   : intelmpi
+20220825 031554.966 INFO             PET4 ESMF_MOAB                   : enabled
+20220825 031554.966 INFO             PET4 ESMF_LAPACK                 : enabled
+20220825 031554.966 INFO             PET4 ESMF_NETCDF                 : enabled
+20220825 031554.966 INFO             PET4 ESMF_PNETCDF                : disabled
+20220825 031554.966 INFO             PET4 ESMF_PIO                    : enabled
+20220825 031554.966 INFO             PET4 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET4 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET4 esmfComm=intelmpi
+20220825 031554.967 INFO             PET4 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET4 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET4 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET4 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET4 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET4 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET4 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET4 PE=2 SSI=0 SSIPE=2
+20220825 031554.967 INFO             PET4 PE=3 SSI=0 SSIPE=3
+20220825 031554.967 INFO             PET4 PE=4 SSI=0 SSIPE=4
+20220825 031554.967 INFO             PET4 PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET4 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.968 INFO             PET4 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET4 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET4 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET4 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET4 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET4 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET4 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET4 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET4 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET4 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET4 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET4 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET4 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET4 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET4 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET4 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET4 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET4 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET4 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET4 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET4 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET4 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET4 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET4 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET4 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET4 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET4 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET4 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET4 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET4 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET4 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET4 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET4 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET4 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET4 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET4 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET4 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET4 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET4 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET4 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET4 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET4 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET4 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET4 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET4 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET4 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET4 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET4 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET4 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET4 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET4 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET4 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET4 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET4 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET4 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET4 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET4 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET4 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET4 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET4 main: vm located at: 0x18099d0
+20220825 031554.968 INFO             PET4 main: petCount=6 localPet=4 mypthid=47807432003392 currentSsiPe=42
+20220825 031554.968 INFO             PET4 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET4 main:  SSIPE=2
+20220825 031554.968 INFO             PET4 main:  SSIPE=42
+20220825 031554.968 INFO             PET4 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET4 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET4 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET4 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET4 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET4 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET4 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET4 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET4 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET4 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.968 INFO             PET4 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET4 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET4 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET4 Executing 'userm1_register'
+20220825 031554.969 INFO             PET4 Executing 'userm2_setvm'
+20220825 031554.969 DEBUG            PET4 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.969 DEBUG            PET4 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.970 INFO             PET4 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET4 model1: vm located at: 0x18629d0
+20220825 031554.970 INFO             PET4 model1: petCount=6 localPet=4 mypthid=47807432003392 currentSsiPe=4
+20220825 031554.970 INFO             PET4 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET4 model1:  SSIPE=4
+20220825 031554.970 INFO             PET4 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET4 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET4 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET4 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET4 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET4 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET4 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET4 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET4 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET4 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET4 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET4 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET4 Entering 'user1_run'
+20220825 031554.973 INFO             PET4  user1_run: on SSIPE:            4  Filling data lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.162 INFO             PET4  user1_run: on SSIPE:            4  Filling data lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.249 INFO             PET4  user1_run: on SSIPE:            4  Filling data lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.336 INFO             PET4  user1_run: on SSIPE:            4  Filling data lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.423 INFO             PET4  user1_run: on SSIPE:            4  Filling data lbound:        6669           1           1  ubound:        8334        1200          10
+20220825 031555.509 INFO             PET4 Exiting 'user1_run'
+20220825 031556.139 INFO             PET4  NUMBER_OF_PROCESSORS           6
+20220825 031556.139 INFO             PET4  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.139 INFO             PET4 Finalizing ESMF
+20220825 031554.966 INFO             PET5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET5 !!! THE ESMF_LOG IS SET TO OUTPUT ALL LOG MESSAGES !!!
+20220825 031554.966 INFO             PET5 !!!     THIS MAY CAUSE SLOWDOWN IN PERFORMANCE     !!!
+20220825 031554.966 INFO             PET5 !!! FOR PRODUCTION RUNS, USE:                      !!!
+20220825 031554.966 INFO             PET5 !!!                   ESMF_LOGKIND_Multi_On_Error  !!!
+20220825 031554.966 INFO             PET5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+20220825 031554.966 INFO             PET5 Running with ESMF Version   : v8.4.0b10-16-g5f2b55acea
+20220825 031554.966 INFO             PET5 ESMF library build date/time: "Aug 25 2022" "02:50:48"
+20220825 031554.966 INFO             PET5 ESMF library build location : /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/intel_18.0.5b_intelmpi_O_develop/esmf
+20220825 031554.966 INFO             PET5 ESMF_COMM                   : intelmpi
+20220825 031554.967 INFO             PET5 ESMF_MOAB                   : enabled
+20220825 031554.967 INFO             PET5 ESMF_LAPACK                 : enabled
+20220825 031554.967 INFO             PET5 ESMF_NETCDF                 : enabled
+20220825 031554.967 INFO             PET5 ESMF_PNETCDF                : disabled
+20220825 031554.967 INFO             PET5 ESMF_PIO                    : enabled
+20220825 031554.967 INFO             PET5 ESMF_YAMLCPP                : enabled
+20220825 031554.967 INFO             PET5 --- VMK::logSystem() start -------------------------------
+20220825 031554.967 INFO             PET5 esmfComm=intelmpi
+20220825 031554.967 INFO             PET5 isPthreadsEnabled=1
+20220825 031554.967 INFO             PET5 isOpenMPEnabled=1
+20220825 031554.967 INFO             PET5 isOpenACCEnabled=0
+20220825 031554.967 INFO             PET5 isSsiSharedMemoryEnabled=1
+20220825 031554.967 INFO             PET5 ssiCount=1 peCount=6
+20220825 031554.967 INFO             PET5 PE=0 SSI=0 SSIPE=0
+20220825 031554.967 INFO             PET5 PE=1 SSI=0 SSIPE=1
+20220825 031554.967 INFO             PET5 PE=2 SSI=0 SSIPE=2
+20220825 031554.967 INFO             PET5 PE=3 SSI=0 SSIPE=3
+20220825 031554.967 INFO             PET5 PE=4 SSI=0 SSIPE=4
+20220825 031554.967 INFO             PET5 PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET5 --- VMK::logSystem() MPI Control Variables ---------------
+20220825 031554.968 INFO             PET5 index=   0                                        MPIR_CVAR_DEBUG_HOLD : If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0").
+20220825 031554.968 INFO             PET5 index=   1                                    MPIR_CVAR_ERROR_CHECKING : If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime .
+20220825 031554.968 INFO             PET5 index=   2                                    MPIR_CVAR_ASYNC_PROGRESS : If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation.
+20220825 031554.968 INFO             PET5 index=   3                              MPIR_CVAR_DEFAULT_THREAD_LEVEL : Sets the default thread level to use when using MPI_INIT.
+20220825 031554.968 INFO             PET5 index=   4                                           MPIR_CVAR_MEMDUMP : If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes.
+20220825 031554.968 INFO             PET5 index=   5                            MPIR_CVAR_SUPPRESS_ABORT_MESSAGE : Disable printing of abort error message.
+20220825 031554.968 INFO             PET5 index=   6                             MPIR_CVAR_REDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET5 index=   7                                 MPIR_CVAR_ENABLE_SMP_REDUCE : Enable SMP aware reduce.
+20220825 031554.968 INFO             PET5 index=   8                           MPIR_CVAR_MAX_SMP_REDUCE_MSG_SIZE : Maximum message size for which SMP-aware reduce is used.  A value of '0' uses SMP-aware reduce for all message sizes.
+20220825 031554.968 INFO             PET5 index=   9                 MPIR_CVAR_REDSCAT_COMMUTATIVE_LONG_MSG_SIZE : the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes)
+20220825 031554.968 INFO             PET5 index=  10                                   MPIR_CVAR_BCAST_MIN_PROCS : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  11                              MPIR_CVAR_BCAST_SHORT_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  12                               MPIR_CVAR_BCAST_LONG_MSG_SIZE : Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  13                                  MPIR_CVAR_ENABLE_SMP_BCAST : Enable SMP aware broadcast (See also: MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  14                            MPIR_CVAR_MAX_SMP_BCAST_MSG_SIZE : Maximum message size for which SMP-aware broadcast is used.  A value of '0' uses SMP-aware broadcast for all message sizes. (See also: MPIR_CVAR_ENABLE_SMP_BCAST)
+20220825 031554.968 INFO             PET5 index=  15                     MPIR_CVAR_GATHERV_INTER_SSEND_MIN_PROCS : Use Ssend (synchronous send) for intercommunicator MPI_Gatherv if the "group B" size is >= this value.  Specifying "-1" always avoids using Ssend.  For backwards compatibility, specifying "0" uses the default value.
+20220825 031554.968 INFO             PET5 index=  16                          MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE : the short message algorithm will be used if the send buffer size is <= this value (in bytes)
+20220825 031554.968 INFO             PET5 index=  17                            MPIR_CVAR_ENABLE_SMP_COLLECTIVES : Enable SMP aware collective communication.
+20220825 031554.968 INFO             PET5 index=  18                              MPIR_CVAR_ENABLE_SMP_ALLREDUCE : Enable SMP aware allreduce.
+20220825 031554.968 INFO             PET5 index=  19                        MPIR_CVAR_MAX_SMP_ALLREDUCE_MSG_SIZE : Maximum message size for which SMP-aware allreduce is used.  A value of '0' uses SMP-aware allreduce for all message sizes.
+20220825 031554.968 INFO             PET5 index=  20                            MPIR_CVAR_GATHER_VSMALL_MSG_SIZE : use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  21                       MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  22                                MPIR_CVAR_ENABLE_SMP_BARRIER : Enable SMP aware barrier.
+20220825 031554.968 INFO             PET5 index=  23                          MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  24                           MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE : For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  25                           MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE : the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  26                          MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE : the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE)
+20220825 031554.968 INFO             PET5 index=  27                                 MPIR_CVAR_ALLTOALL_THROTTLE : max no. of irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once
+20220825 031554.968 INFO             PET5 index=  28                      MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE : use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes)
+20220825 031554.968 INFO             PET5 index=  29                      MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE : The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation.
+20220825 031554.968 INFO             PET5 index=  30                                  MPIR_CVAR_CTXID_EAGER_SIZE : The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help.
+20220825 031554.968 INFO             PET5 index=  31                              MPIR_CVAR_COMM_SPLIT_USE_QSORT : Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort.
+20220825 031554.968 INFO             PET5 index=  32                                    MPIR_CVAR_PROCTABLE_SIZE : Size of the "MPIR" debugger interface proctable (process table).
+20220825 031554.968 INFO             PET5 index=  33                                   MPIR_CVAR_PROCTABLE_PRINT : If true, dump the proctable entries at MPIR_WaitForDebugger-time.
+20220825 031554.968 INFO             PET5 index=  34                                 MPIR_CVAR_PRINT_ERROR_STACK : If true, print an error stack trace at error handling time.
+20220825 031554.968 INFO             PET5 index=  35                                  MPIR_CVAR_CHOP_ERROR_STACK : If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default.
+20220825 031554.968 INFO             PET5 index=  36                              MPIR_CVAR_NAMESERV_FILE_PUBDIR : Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications.
+20220825 031554.968 INFO             PET5 index=  37                           MPIR_CVAR_ABORT_ON_LEAKED_HANDLES : If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work.
+20220825 031554.968 INFO             PET5 index=  38                                  MPIR_CVAR_COLL_ALIAS_CHECK : Enable checking of aliasing in collective operations
+20220825 031554.968 INFO             PET5 index=  39                                  MPIR_CVAR_CH3_ENABLE_HCOLL : If true, enable HCOLL collectives.
+20220825 031554.968 INFO             PET5 index=  40                                       MPIR_CVAR_CH3_NOLOCAL : If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives.
+20220825 031554.968 INFO             PET5 index=  41                              MPIR_CVAR_CH3_ODD_EVEN_CLIQUES : If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine.
+20220825 031554.968 INFO             PET5 index=  42                            MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE : This cvar controls the message size at which CH3 switches from eager to rendezvous mode.
+20220825 031554.968 INFO             PET5 index=  43                                MPIR_CVAR_CH3_RMA_SLOTS_SIZE : Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  44                    MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES : Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive calue.
+20220825 031554.968 INFO             PET5 index=  45               MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE : Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied.
+20220825 031554.968 INFO             PET5 index=  46                MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM : Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be nagative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure.
+20220825 031554.968 INFO             PET5 index=  47            MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING : Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation avaliable in the ending synchronization call.
+20220825 031554.968 INFO             PET5 index=  48                      MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD : Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value.
+20220825 031554.968 INFO             PET5 index=  49               MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD : Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchonization approach.  Change this value if programs fail because they run out of requests or other internal resources
+20220825 031554.968 INFO             PET5 index=  50                          MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE : Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  51                       MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE : Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  52                      MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE : Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  53                   MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE : Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  54           MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE : Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediatly.  Requires a positive value.
+20220825 031554.968 INFO             PET5 index=  55                                         MPIR_CVAR_ENABLE_FT : Enable fault tolerance functions
+20220825 031554.968 INFO             PET5 index=  56                          MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET5 index=  57                    MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ : This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value.
+20220825 031554.968 INFO             PET5 index=  58                            MPIR_CVAR_NEMESIS_ENABLE_CKPOINT : If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized.
+20220825 031554.968 INFO             PET5 index=  59                                    MPIR_CVAR_NEMESIS_NETMOD : If non-empty, this cvar specifies which network module should be used for communication.
+20220825 031554.968 INFO             PET5 index=  60                         MPIR_CVAR_NEMESIS_LMT_DMA_THRESHOLD : Messages larger than this size will use the "dma" (knem) intranode LMT implementation, if it is enabled and available.
+20220825 031554.968 INFO             PET5 index=  61                                MPIR_CVAR_POLLS_BEFORE_YIELD : When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding.
+20220825 031554.968 INFO             PET5 index=  62                                  MPIR_CVAR_OFI_USE_PROVIDER : If non-null, choose an OFI provider by name
+20220825 031554.968 INFO             PET5 index=  63                                MPIR_CVAR_OFI_DUMP_PROVIDERS : If true, dump provider information at init
+20220825 031554.968 INFO             PET5 index=  64                            MPIR_CVAR_CH3_INTERFACE_HOSTNAME : If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET5 index=  65                                    MPIR_CVAR_CH3_PORT_RANGE : The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0.
+20220825 031554.968 INFO             PET5 index=  66                         MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE : If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both.
+20220825 031554.968 INFO             PET5 index=  67                   MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES : This cvar controls the number of times to retry the gethostbyname() function before giving up.
+20220825 031554.968 INFO             PET5 index=  68                          MPIR_CVAR_NEMESIS_MXM_BULK_CONNECT : If true, force mxm to connect all processes at initialization time.
+20220825 031554.968 INFO             PET5 index=  69                       MPIR_CVAR_NEMESIS_MXM_BULK_DISCONNECT : If true, force mxm to disconnect all processes at finalization time.
+20220825 031554.968 INFO             PET5 index=  70                              MPIR_CVAR_NEMESIS_MXM_HUGEPAGE : If true, mxm tries detecting hugepage support.  On HPC-X 2.3 and earlier, this might cause problems on Ubuntu and other platforms even if the system provides hugepage support.
+20220825 031554.968 INFO             PET5 --- VMK::logSystem() end ---------------------------------
+20220825 031554.968 INFO             PET5 main: --- VMK::log() start -------------------------------------
+20220825 031554.968 INFO             PET5 main: vm located at: 0x26759d0
+20220825 031554.968 INFO             PET5 main: petCount=6 localPet=5 mypthid=47537504034624 currentSsiPe=62
+20220825 031554.968 INFO             PET5 main: Current system level affinity pinning for local PET:
+20220825 031554.968 INFO             PET5 main:  SSIPE=22
+20220825 031554.968 INFO             PET5 main:  SSIPE=62
+20220825 031554.968 INFO             PET5 main: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.968 INFO             PET5 main: ssiCount=1 localSsi=0
+20220825 031554.968 INFO             PET5 main: mpionly=1 threadsflag=0
+20220825 031554.968 INFO             PET5 main: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.968 INFO             PET5 main: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=0 SSI=0 SSIPE=0
+20220825 031554.968 INFO             PET5 main: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=1 SSI=0 SSIPE=1
+20220825 031554.968 INFO             PET5 main: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=2 SSI=0 SSIPE=2
+20220825 031554.968 INFO             PET5 main: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=3 SSI=0 SSIPE=3
+20220825 031554.968 INFO             PET5 main: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=4 SSI=0 SSIPE=4
+20220825 031554.968 INFO             PET5 main: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.968 INFO             PET5 main:  PE=5 SSI=0 SSIPE=5
+20220825 031554.968 INFO             PET5 main: --- VMK::log() end ---------------------------------------
+20220825 031554.969 INFO             PET5 Executing 'userm1_setvm'
+20220825 031554.969 INFO             PET5 Executing 'userm1_register'
+20220825 031554.969 INFO             PET5 Executing 'userm2_setvm'
+20220825 031554.969 DEBUG            PET5 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.969 DEBUG            PET5 vmkt_create()#201 Pthread: service=1 (0: actual PET, 1: service thread) - PTHREAD_STACK_MIN: 16384 bytes stack_size: 4194304 bytes
+20220825 031554.970 INFO             PET5 model1: --- VMK::log() start -------------------------------------
+20220825 031554.970 INFO             PET5 model1: vm located at: 0x26ce9d0
+20220825 031554.970 INFO             PET5 model1: petCount=6 localPet=5 mypthid=47537504034624 currentSsiPe=5
+20220825 031554.970 INFO             PET5 model1: Current system level affinity pinning for local PET:
+20220825 031554.970 INFO             PET5 model1:  SSIPE=5
+20220825 031554.970 INFO             PET5 model1: Current system level OMP_NUM_THREADS setting for local PET: 1
+20220825 031554.970 INFO             PET5 model1: ssiCount=1 localSsi=0
+20220825 031554.970 INFO             PET5 model1: mpionly=1 threadsflag=0
+20220825 031554.970 INFO             PET5 model1: ESMF level logical PET->PE association (but consider system level affinity pinning!):
+20220825 031554.970 INFO             PET5 model1: PET=0 lpid=0 tid=0 pid=0 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=0 SSI=0 SSIPE=0
+20220825 031554.970 INFO             PET5 model1: PET=1 lpid=1 tid=0 pid=1 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=1 SSI=0 SSIPE=1
+20220825 031554.970 INFO             PET5 model1: PET=2 lpid=2 tid=0 pid=2 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=2 SSI=0 SSIPE=2
+20220825 031554.970 INFO             PET5 model1: PET=3 lpid=3 tid=0 pid=3 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=3 SSI=0 SSIPE=3
+20220825 031554.970 INFO             PET5 model1: PET=4 lpid=4 tid=0 pid=4 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=4 SSI=0 SSIPE=4
+20220825 031554.970 INFO             PET5 model1: PET=5 lpid=5 tid=0 pid=5 peCount=1 accCount=0
+20220825 031554.970 INFO             PET5 model1:  PE=5 SSI=0 SSIPE=5
+20220825 031554.970 INFO             PET5 model1: --- VMK::log() end ---------------------------------------
+20220825 031554.973 INFO             PET5 Entering 'user1_run'
+20220825 031554.973 INFO             PET5  user1_run: on SSIPE:            5  Filling data lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.164 INFO             PET5  user1_run: on SSIPE:            5  Filling data lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.251 INFO             PET5  user1_run: on SSIPE:            5  Filling data lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.338 INFO             PET5  user1_run: on SSIPE:            5  Filling data lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.424 INFO             PET5  user1_run: on SSIPE:            5  Filling data lbound:        8335           1           1  ubound:       10000        1200          10
+20220825 031555.511 INFO             PET5 Exiting 'user1_run'
+20220825 031556.140 INFO             PET5  NUMBER_OF_PROCESSORS           6
+20220825 031556.140 INFO             PET5  PASS  System Test ESMF_FieldSharedDeSSISTest, ESMF_FieldSharedDeSSISTest.F90, line 276
+20220825 031556.140 INFO             PET5 Finalizing ESMF
