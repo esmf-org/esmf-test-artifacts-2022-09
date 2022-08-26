@@ -1,0 +1,100 @@
+2022-08-26 10:00:20
+Beginning Test, file ESMC_FieldGridRegrid2UTest.C, line 70
+Beginning Test, file ESMC_FieldGridRegrid2UTest.C, line 70NUMBER_OF_PROCESSORS 1
+PASS GridCreate, ESMC_FieldGridRegrid2UTest.C, line 119
+PASS GridAddCoord, ESMC_FieldGridRegrid2UTest.C, line 134
+PASS GridAddItem, ESMC_FieldGridRegrid2UTest.C, line 144
+PASS GridGetItem - mask, ESMC_FieldGridRegrid2UTest.C, line 155
+PASS GridGetCoord - X, ESMC_FieldGridRegrid2UTest.C, line 182
+PASS GridGetCoord - Y, ESMC_FieldGridRegrid2UTest.C, line 202
+Masked value at [1.500000,0.500000]
+Masked value at [1.500000,1.500000]
+Masked value at [1.500000,2.500000]
+Masked value at [1.500000,3.500000]
+
+Destination Grid coords: 
+[0.500000,0.500000]
+[1.500000,0.500000]
+[2.500000,0.500000]
+[3.500000,0.500000]
+[0.500000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[3.500000,1.500000]
+[0.500000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[3.500000,2.500000]
+[0.500000,3.500000]
+[1.500000,3.500000]
+[2.500000,3.500000]
+[3.500000,3.500000]
+
+PASS MeshCreate, ESMC_FieldGridRegrid2UTest.C, line 296
+PASS MeshAddNodes, ESMC_FieldGridRegrid2UTest.C, line 304
+PASS MeshAddElements, ESMC_FieldGridRegrid2UTest.C, line 318
+PASS MeshGetNodeCount, ESMC_FieldGridRegrid2UTest.C, line 328
+num_node = 16
+num_node_out=16
+PASS MeshGetElementCount, ESMC_FieldGridRegrid2UTest.C, line 339
+num_elem = 9
+num_elem_out=9
+
+Source Mesh coords: 
+[0.000000,0.000000]
+[1.500000,0.000000]
+[2.500000,0.000000]
+[4.000000,0.000000]
+[0.000000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[4.000000,1.500000]
+[0.000000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[4.000000,2.500000]
+[0.000000,4.000000]
+[1.500000,4.000000]
+[2.500000,4.000000]
+[4.000000,4.000000]
+
+PASS Create ESMC_Field object from a Grid via TypeKind, ESMC_FieldGridRegrid2UTest.C, line 363
+[r12i4n1:17792:0:17792] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+==== backtrace (tid:  17792) ====
+ 0  /glade/u/apps/ch/opt/ucx/1.11.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x2ae008f251b4]
+ 1  /glade/u/apps/ch/opt/ucx/1.11.0/lib/libucs.so.0(+0x2a4dc) [0x2ae008f254dc]
+ 2  /glade/u/apps/ch/opt/ucx/1.11.0/lib/libucs.so.0(+0x2a74b) [0x2ae008f2574b]
+ 3  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34) [0x2adfefd44734]
+ 4  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x7f) [0x2adfeff65ebf]
+ 5  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0xc1) [0x2adfeffb9181]
+ 6  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefromintptr_+0xdc) [0x2adff0c9d79c]
+ 7  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(f_esmf_fieldcreatemeshtk_+0x1f0) [0x2adff07ed6b0]
+ 8  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI5Field6createE9ESMC_Mesh18ESMC_TypeKind_Flag17ESMC_MeshLoc_FlagP18ESMC_InterArrayIntS5_S5_PKcPi+0x660) [0x2adfefb52f60]
+ 9  /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(ESMC_FieldCreateMeshTypeKind+0x69) [0x2adfef6a8069]
+10  ./ESMC_FieldGridRegrid2UTest() [0x4061d6]
+11  /glade/u/apps/ch/os/lib64/libc.so.6(__libc_start_main+0xf5) [0x2adff63cea35]
+12  ./ESMC_FieldGridRegrid2UTest() [0x404da9]
+=================================
+[r12i4n1:17792] *** Process received signal ***
+[r12i4n1:17792] Signal: Segmentation fault (11)
+[r12i4n1:17792] Signal code:  (-6)
+[r12i4n1:17792] Failing at address: 0x105700004580
+[r12i4n1:17792] [ 0] /glade/u/apps/ch/os/lib64/libpthread.so.0(+0x11c00)[0x2adff5afdc00]
+[r12i4n1:17792] [ 1] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI6LogErr13MsgFoundErrorEiPKciS2_S2_Pi+0x34)[0x2adfefd44734]
+[r12i4n1:17792] [ 2] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI7MeshCap22meshcreatenodedistgridEPi+0x7f)[0x2adfeff65ebf]
+[r12i4n1:17792] [ 3] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(c_esmc_meshcreatenodedistgrid_+0xc1)[0x2adfeffb9181]
+[r12i4n1:17792] [ 4] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(esmf_meshmod_esmf_meshcreatefromintptr_+0xdc)[0x2adff0c9d79c]
+[r12i4n1:17792] [ 5] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(f_esmf_fieldcreatemeshtk_+0x1f0)[0x2adff07ed6b0]
+[r12i4n1:17792] [ 6] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(_ZN5ESMCI5Field6createE9ESMC_Mesh18ESMC_TypeKind_Flag17ESMC_MeshLoc_FlagP18ESMC_InterArrayIntS5_S5_PKcPi+0x660)[0x2adfefb52f60]
+[r12i4n1:17792] [ 7] /glade/scratch/dunlap/esmf-testing/nvhpc_21.11_openmpi_g_develop/esmf/lib/libg/Linux.nvhpc.64.openmpi.default/libesmf.so(ESMC_FieldCreateMeshTypeKind+0x69)[0x2adfef6a8069]
+[r12i4n1:17792] [ 8] ./ESMC_FieldGridRegrid2UTest[0x4061d6]
+[r12i4n1:17792] [ 9] /glade/u/apps/ch/os/lib64/libc.so.6(__libc_start_main+0xf5)[0x2adff63cea35]
+[r12i4n1:17792] [10] ./ESMC_FieldGridRegrid2UTest[0x404da9]
+[r12i4n1:17792] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node r12i4n1 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
