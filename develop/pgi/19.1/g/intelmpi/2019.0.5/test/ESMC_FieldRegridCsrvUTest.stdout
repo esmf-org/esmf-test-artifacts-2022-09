@@ -1,0 +1,29 @@
+2022-08-26 03:23:16
+Beginning Test, file ESMC_FieldRegridCsrvUTest.C, line 56
+Beginning Test, file ESMC_FieldRegridCsrvUTest.C, line 56NUMBER_OF_PROCESSORS 1
+PASS MeshCreate, ESMC_FieldRegridCsrvUTest.C, line 114
+PASS MeshAddNodes, ESMC_FieldRegridCsrvUTest.C, line 122
+PASS MeshAddElements, ESMC_FieldRegridCsrvUTest.C, line 136
+PASS MeshGetNodeCount, ESMC_FieldRegridCsrvUTest.C, line 146
+PASS MeshGetElementCount, ESMC_FieldRegridCsrvUTest.C, line 157
+PASS MeshCreate, ESMC_FieldRegridCsrvUTest.C, line 225
+PASS MeshAddNodes, ESMC_FieldRegridCsrvUTest.C, line 233
+PASS MeshAddElements, ESMC_FieldRegridCsrvUTest.C, line 242
+PASS MeshGetNodeCount, ESMC_FieldRegridCsrvUTest.C, line 252
+PASS MeshGetElementCount, ESMC_FieldRegridCsrvUTest.C, line 263
+[h14c30:287021:0:287021] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+==== backtrace (tid: 287021) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b5bf4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ec6e1 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d91b7 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7fbeb esmf_meshmod_esmf_meshcreatefromintptr_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3158
+ 5 0x0000000001c804b5 f_esmf_fieldcreatemeshtk_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMF_Field_C.F90:319
+ 6 0x0000000000f0fc8b ESMCI::Field::create()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMCI_Field.C:759
+ 7 0x000000000168f799 ESMC_FieldCreateMeshTypeKind()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/interface/ESMC_Field.C:145
+ 8 0x0000000000402132 main()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_develop/esmf/src/Infrastructure/Field/tests/ESMC_FieldRegridCsrvUTest.C:276
+ 9 0x0000000000022555 __libc_start_main()  ???:0
+10 0x00000000004010a9 _start()  ???:0
+=================================
+srun: error: h14c30: task 0: Segmentation fault (core dumped)
+srun: launch/slurm: _step_signal: Terminating StepId=35117196.117
