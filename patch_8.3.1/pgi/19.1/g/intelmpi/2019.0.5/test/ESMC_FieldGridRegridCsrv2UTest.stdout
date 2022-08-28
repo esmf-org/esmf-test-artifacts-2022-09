@@ -1,0 +1,111 @@
+2022-08-28 03:14:38
+Beginning Test, file ESMC_FieldGridRegridCsrv2UTest.C, line 72
+Beginning Test, file ESMC_FieldGridRegridCsrv2UTest.C, line 72NUMBER_OF_PROCESSORS 1
+PASS GridCreate, ESMC_FieldGridRegridCsrv2UTest.C, line 117
+PASS GridAddCoord, ESMC_FieldGridRegridCsrv2UTest.C, line 133
+PASS GridAddItem, ESMC_FieldGridRegridCsrv2UTest.C, line 143
+PASS GridGetItem - mask, ESMC_FieldGridRegridCsrv2UTest.C, line 154
+exLB_corner = [1,1]
+exUB_corner = [5,5]
+PASS GridGetCoord - X, ESMC_FieldGridRegridCsrv2UTest.C, line 179
+PASS GridGetCoord - Y, ESMC_FieldGridRegridCsrv2UTest.C, line 202
+exLB_center = [1,1]
+exUB_center = [4,4]
+PASS GridGetCoord - X, ESMC_FieldGridRegridCsrv2UTest.C, line 227
+PASS GridGetCoord - Y, ESMC_FieldGridRegridCsrv2UTest.C, line 250
+Masked value at [1.500000,0.500000]
+Masked value at [1.500000,1.500000]
+Masked value at [1.500000,2.500000]
+Masked value at [1.500000,3.500000]
+PASS MeshCreate, ESMC_FieldGridRegridCsrv2UTest.C, line 333
+PASS MeshAddNodes, ESMC_FieldGridRegridCsrv2UTest.C, line 341
+PASS MeshAddElements, ESMC_FieldGridRegridCsrv2UTest.C, line 355
+num_node = 16
+num_node_out=16
+PASS MeshGetNodeCount, ESMC_FieldGridRegridCsrv2UTest.C, line 365
+num_elem = 9
+num_elem_out=9
+
+Source Mesh corner coords: 
+[0.000000,0.000000]
+PASS MeshGetElementCount, ESMC_FieldGridRegridCsrv2UTest.C, line 376
+[1.500000,0.000000]
+[2.500000,0.000000]
+[4.000000,0.000000]
+[0.000000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[4.000000,1.500000]
+[0.000000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[4.000000,2.500000]
+[0.000000,4.000000]
+[1.500000,4.000000]
+[2.500000,4.000000]
+[4.000000,4.000000]
+
+
+Destination Grid corner coords: 
+[0.000000,0.000000]
+[1.000000,0.000000]
+[2.000000,0.000000]
+[3.000000,0.000000]
+[4.000000,0.000000]
+[0.000000,1.000000]
+[1.000000,1.000000]
+[2.000000,1.000000]
+[3.000000,1.000000]
+[4.000000,1.000000]
+[0.000000,2.000000]
+[1.000000,2.000000]
+[2.000000,2.000000]
+[3.000000,2.000000]
+[4.000000,2.000000]
+[0.000000,3.000000]
+[1.000000,3.000000]
+[2.000000,3.000000]
+[3.000000,3.000000]
+[4.000000,3.000000]
+[0.000000,4.000000]
+[1.000000,4.000000]
+[2.000000,4.000000]
+[3.000000,4.000000]
+[4.000000,4.000000]
+
+
+Destination Grid center coords: 
+[0.500000,0.500000]
+[1.500000,0.500000]
+[2.500000,0.500000]
+[3.500000,0.500000]
+[0.500000,1.500000]
+[1.500000,1.500000]
+[2.500000,1.500000]
+[3.500000,1.500000]
+[0.500000,2.500000]
+[1.500000,2.500000]
+[2.500000,2.500000]
+[3.500000,2.500000]
+[0.500000,3.500000]
+[1.500000,3.500000]
+[2.500000,3.500000]
+[3.500000,3.500000]
+
+PASS Create ESMC_Field object from a Grid via TypeKind, ESMC_FieldGridRegridCsrv2UTest.C, line 426
+[h25c34:209944:0:209944] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x4f1b591)
+==== backtrace (tid: 209944) ====
+ 0 0x000000000004d455 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000010b68c4 ESMCI::LogErr::MsgFoundError()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+ 2 0x00000000012ed271 ESMCI::MeshCap::meshcreatenodedistgrid()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+ 3 0x00000000013d7587 c_esmc_meshcreatenodedistgrid_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+ 4 0x0000000001e7d14b esmf_meshmod_esmf_meshcreatefromintptr_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:3158
+ 5 0x0000000001c7dda5 f_esmf_fieldcreatemeshtk_()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Field/interface/ESMF_Field_C.F90:319
+ 6 0x0000000000f1095b ESMCI::Field::create()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Field/interface/ESMCI_Field.C:759
+ 7 0x000000000168ee69 ESMC_FieldCreateMeshTypeKind()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Field/interface/ESMC_Field.C:145
+ 8 0x0000000000402ffe main()  /scratch1/NCEPDEV/stmp2/Rocky.Dunlap/esmf-testing/pgi_19.1_intelmpi_g_patch_8.3.1/esmf/src/Infrastructure/Field/tests/ESMC_FieldGridRegridCsrv2UTest.C:433
+ 9 0x0000000000022555 __libc_start_main()  ???:0
+10 0x0000000000401419 _start()  ???:0
+=================================
+srun: error: h25c34: task 0: Segmentation fault (core dumped)
+srun: launch/slurm: _step_signal: Terminating StepId=35174233.121
