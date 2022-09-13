@@ -1,0 +1,183 @@
+2022-09-13 09:35:05
+MPT ERROR: Rank 2(g:2) received signal SIGSEGV(11).
+	Process ID: 20703, Host: r12i6n9, Program: /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/nuopc-app-prototypes/AtmOcnTransferMeshProto/esmApp
+	MPT Version: HPE MPT 2.25  08/14/21 03:05:20
+
+MPT: --------stack traceback-------
+MPT: Attaching to program: /proc/20703/exe, process 20703
+MPT: [New LWP 20710]
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libm.so.6
+MPT: Try: zypper install -C "debuginfo(build-id)=cc12cf31ea4a157ebc7ac7bdfc09d5bfa3e0f3e0"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libdl.so.2
+MPT: Try: zypper install -C "debuginfo(build-id)=86536433e7d5a205deca926f6f00436b2ff206b1"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/librt.so.1
+MPT: Try: zypper install -C "debuginfo(build-id)=e12cd7e73c31cb8765cba03a3c2f9efc2d043ff8"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libpthread.so.0
+MPT: Try: zypper install -C "debuginfo(build-id)=9fa703da2a52d78cc49877c18843db7b1ad9049b"
+MPT: [Thread debugging using libthread_db enabled]
+MPT: Using host libthread_db library "/glade/u/apps/ch/os/lib64/libthread_db.so.1".
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libc.so.6
+MPT: Try: zypper install -C "debuginfo(build-id)=72aaaa4006e91624304a210a7f945b61d3d643b4"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libgcc_s.so.1
+MPT: Try: zypper install -C "debuginfo(build-id)=c7e890ab90e29cffd785bf25e7d90f2f0af3a102"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libssl.so.1.0.0
+MPT: Try: zypper install -C "debuginfo(build-id)=7607ed9b6a82bfaecf5318ac9d65cae5a22865ef"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libcrypto.so.1.0.0
+MPT: Try: zypper install -C "debuginfo(build-id)=63a385acb8b045f7cfa7b53e2d9bfb745edc1693"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libresolv.so.2
+MPT: Try: zypper install -C "debuginfo(build-id)=89f1290f62c61ee8f268234c5cff893c1e99c751"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libkeyutils.so.1
+MPT: Try: zypper install -C "debuginfo(build-id)=8982882fa17c60fed02166f229335a9d0eaf77c9"
+MPT: Missing separate debuginfo for /glade/u/apps/ch/os/lib64/libselinux.so.1
+MPT: Try: zypper install -C "debuginfo(build-id)=0627d20b9e481e6a9c6fcacaf8e3f5c2318529cf"
+MPT: 0x00002ae4276f8826 in waitpid ()
+MPT:    from /glade/u/apps/ch/os/lib64/libpthread.so.0
+MPT: Missing separate debuginfos, use: zypper install glibc-debuginfo-2.22-100.27.3.x86_64 krb5-debuginfo-1.12.5-40.37.7.x86_64 libatomic1-debuginfo-9.3.1+git1296-1.7.2.x86_64 libcom_err2-debuginfo-1.43.8-3.14.1.x86_64 libcurl4-debuginfo-7.60.0-4.15.2.x86_64 libibverbs-debuginfo-41mlnx1-OFED.4.7.0.0.2.47329.x86_64 libldap-2_4-2-debuginfo-2.4.41-18.71.2.x86_64 libmlx5-debuginfo-41mlnx1-OFED.4.7.0.3.3.47329.x86_64 libnghttp2-14-debuginfo-1.7.1-1.84.x86_64 libnl3-200-debuginfo-3.2.23-2.21.x86_64 libpcre1-debuginfo-8.39-8.3.1.x86_64 libsasl2-3-debuginfo-2.1.26-8.10.1.x86_64 libssh4-debuginfo-0.6.3-12.12.1.x86_64 libstdc++6-debuginfo-9.3.1+git1296-1.7.2.x86_64
+MPT: (gdb) #0  0x00002ae4276f8826 in waitpid ()
+MPT:    from /glade/u/apps/ch/os/lib64/libpthread.so.0
+MPT: #1  0x00002ae427a3dc66 in mpi_sgi_system (
+MPT: #2  MPI_SGI_stacktraceback (
+MPT:     header=header@entry=0x7ffd0a5db290 "MPT ERROR: Rank 2(g:2) received signal SIGSEGV(11).\n\tProcess ID: 20703, Host: r12i6n9, Program: /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/nuopc-app-prototypes/AtmOcnTransferMeshProto"...) at sig.c:340
+MPT: #3  0x00002ae427a3de66 in first_arriver_handler (signo=signo@entry=11, 
+MPT:     stack_trace_sem=stack_trace_sem@entry=0x2ae42e900080) at sig.c:489
+MPT: #4  0x00002ae427a3e0f3 in slave_sig_handler (signo=11, 
+MPT:     siginfo=<optimized out>, extra=<optimized out>) at sig.c:565
+MPT: #5  <signal handler called>
+MPT: #6  0x00002ae4238b5a34 in ESMCI::LogErr::MsgFoundError (rcToCheck=0, 
+MPT:     msg=0x2ae42564e97c <.S70839> "Internal subroutine call returned Error", 
+MPT:     LINE=1755, FILE=0x2ae42564e96c <.S70841> "ESMCI_MeshCap.C", 
+MPT:     method=0x2ae42564e7f6 <.S71197> "MeshCap::meshcreatenodedistgrid()", 
+MPT:     rcToReturn=0x4f1b591)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/LogErr/src/ESMCI_LogErr.C:586
+MPT: #7  0x00002ae423ad713f in ESMCI::MeshCap::meshcreatenodedistgrid (
+MPT:     rc=0x4f1b591)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/Mesh/src/ESMCI_MeshCap.C:1754
+MPT: #8  0x00002ae423b2a381 in c_esmc_meshcreatenodedistgrid_ (
+MPT:     meshpp=0x7ffd0a5dc580, rc=0x7ffd0a5dbfb4)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMCI_Mesh_F.C:247
+MPT: #9  0x00002ae424805f31 in esmf_meshmod::esmf_meshcreatefromfile (
+MPT:     filename=..., fileformat=..., keywordenforcer=..., 
+MPT:     converttodual=<error reading variable: Cannot access memory at address 0x0>, adduserarea=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     maskflag=..., varname=..., nodaldistgrid=..., elementdistgrid=..., 
+MPT:     coordsys=..., name=..., rc=173920324)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/Mesh/interface/ESMF_Mesh.F90:1978
+MPT: #10 0x0000000000412675 in ocn::realize (model=..., rc=18) at ocn.F90:153
+MPT: #11 0x00002ae423cc9cc2 in ESMCI::MethodElement (object=0x1d067e0, 
+MPT:     userRc=0x7ffd0a5dd044)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_MethodTable.C:377
+MPT: #12 0x00002ae423ccad8e in ESMCI::MethodTable::execute (
+MPT:     labelArg=0x7ffd0a5dcde8, object=0x1d067e0, userRc=0x7ffd0a5dd044, 
+MPT:     existflag=0x7ffd0a5dcde7 "\001(\355\337\001")
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_MethodTable.C:563
+MPT: #13 0x00002ae423cc4e3e in c_esmc_methodtableexecuteef_ (ptr=0x1ca1338, 
+MPT:     labelArg=0x2ae425764560 <.C3115_nuopc_modelbase_initializeipdvxp04_> "ModelBase_RealizeProvided", index=0x7ffd0a5dd04c, object=0x1d067e0, 
+MPT:     existflag=0x7ffd0a5dd048, userRc=0x7ffd0a5dd044, rc=0x7ffd0a5dd05c, 
+MPT:     labelLen=25)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_MethodTable.C:347
+MPT: #14 0x00002ae4240fab74 in esmf_attachmethodsmod::esmf_methodgridcompexecute (
+MPT:     gcomp=..., label=..., 
+MPT:     index=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     existflag=10980, userrc=627234536, rc=18)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/AttachMethods/src/ESMF_AttachMethods.F90:1280
+MPT: #15 0x00002ae424d0cfb3 in nuopc_modelbase::initializeipdvxp04 (gcomp=..., 
+MPT:     importstate=..., exportstate=..., clock=..., rc=18)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/addon/NUOPC/src/NUOPC_ModelBase.F90:973
+MPT: #16 0x00002ae423701bfc in ESMCI::FTable::callVFuncPtr (
+MPT:     name=0x1e04200 "InitializeIC07P", vm_pointer=0x1ca26b0, 
+MPT:     userrc=0x7ffd0a5e0a34)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:2167
+MPT: #17 0x00002ae4236fce53 in ESMCI_FTableCallEntryPointVMHop (vm=0x1ca26b0, 
+MPT:     cargoCast=0x1e04200)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:824
+MPT: #18 0x00002ae423f6c78e in ESMCI::enter_callback (sarg=0x1ca47e0, 
+MPT:     mutex=0x1c38200)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/VM/src/ESMCI_VMKernel.C:1122
+MPT: #19 0x00002ae423f58894 in ESMCI::VMK::enter (vmp=0x1ca25c0, arg=0x1ca47e0, 
+MPT:     argvmkt=0x1e04200)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/VM/src/ESMCI_VMKernel.C:2433
+MPT: #20 0x00002ae423f8183e in ESMCI::VM (vmp=0x1ca25c0, info=0x1ca47e0, 
+MPT:     cargo=0x1e04200)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/VM/src/ESMCI_VM.C:1216
+MPT: #21 0x00002ae4236fd313 in c_esmc_ftablecallentrypointvm_ (f90comp=0x1ca1db0, 
+MPT:     ptr_vm_parent=0x1ca1ed8, ptr_vmplan=0x1ca1f80, vm_info=0x1ca1f90, 
+MPT:     vm_cargo=0x1ca1f98, ptr=0x1ca1320, 
+MPT:     method=0x2ae42655f128 <_esmf_compmod_8_+40>, phase=0x7ffd0a5e0fbc, 
+MPT:     port=0x7ffd0a5e0fb8, timeout=0x7ffd0a5e0fb4, recursionCount=0x1ca1fa0, 
+MPT:     rc=0x7ffd0a5e0fdc)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:981
+MPT: #22 0x00002ae4242ad7b0 in esmf_compmod::esmf_compexecute (compp=0x1ca1320, 
+MPT:     method=..., importstate=..., exportstate=..., clock=..., 
+MPT:     syncflag=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     phase=173946508, port=0, timeout=173937380, userrc=173944428, 
+MPT:     rc=173937476)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMF_Comp.F90:1223
+MPT: #23 0x00002ae424587cde in esmf_gridcompmod::esmf_gridcompinitialize (
+MPT:     gridcomp=..., keywordenforcer=..., importstate=..., exportstate=..., 
+MPT:     clock=..., 
+MPT:     syncflag=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     phase=173946508, timeout=0, timeoutflag=.FALSE., userrc=173944428, 
+MPT:     rc=174005956)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMF_GridComp.F90:1412
+MPT: #24 0x00002ae424caff2c in nuopc_driver::loopmodelcompss (driver=..., 
+MPT:     phasestring=..., 
+MPT:     execflag=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     rc=18)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/addon/NUOPC/src/NUOPC_Driver.F90:2713
+MPT: #25 0x00002ae424ca3c98 in nuopc_driver::initializeipdv02p3 (driver=..., 
+MPT:     importstate=..., exportstate=..., clock=..., rc=18)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/addon/NUOPC/src/NUOPC_Driver.F90:1909
+MPT: #26 0x00002ae424c8aaa0 in nuopc_driver::initializegeneric (driver=..., 
+MPT:     importstate=..., exportstate=..., clock=..., rc=18)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/addon/NUOPC/src/NUOPC_Driver.F90:479
+MPT: #27 0x00002ae423701bfc in ESMCI::FTable::callVFuncPtr (
+MPT:     name=0x1bd0f70 "InitializeIC01P", vm_pointer=0x1bd0940, 
+MPT:     userrc=0x7ffd0a5f1ec4)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:2167
+MPT: #28 0x00002ae4236fce53 in ESMCI_FTableCallEntryPointVMHop (vm=0x1bd0940, 
+MPT:     cargoCast=0x1bd0f70)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:824
+MPT: #29 0x00002ae423f586fb in ESMCI::VMK::enter (vmp=0x1bd07f0, arg=0x1bd0b40, 
+MPT:     argvmkt=0x1bd0f70)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/VM/src/ESMCI_VMKernel.C:2318
+MPT: #30 0x00002ae423f8183e in ESMCI::VM (vmp=0x1bd07f0, info=0x1bd0b40, 
+MPT:     cargo=0x1bd0f70)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Infrastructure/VM/src/ESMCI_VM.C:1216
+MPT: #31 0x00002ae4236fd313 in c_esmc_ftablecallentrypointvm_ (f90comp=0x1c36a20, 
+MPT:     ptr_vm_parent=0x1c36b48, ptr_vmplan=0x1c36bf0, vm_info=0x1c36c00, 
+MPT:     vm_cargo=0x1c36c08, ptr=0x1c35f90, 
+MPT:     method=0x2ae42655f128 <_esmf_compmod_8_+40>, phase=0x7ffd0a5f21fc, 
+MPT:     port=0x7ffd0a5f21f8, timeout=0x7ffd0a5f21f4, recursionCount=0x1c36c10, 
+MPT:     rc=0x7ffd0a5f221c)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMCI_FTable.C:981
+MPT: #32 0x00002ae4242ad7b0 in esmf_compmod::esmf_compexecute (compp=0x1c35f90, 
+MPT:     method=..., 
+MPT:     importstate=<error reading variable: Cannot access memory at address 0x0>, exportstate=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     clock=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     syncflag=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     phase=0, port=0, timeout=174007588, userrc=174008108, rc=174007684)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMF_Comp.F90:1223
+MPT: #33 0x00002ae424587cde in esmf_gridcompmod::esmf_gridcompinitialize (
+MPT:     gridcomp=..., keywordenforcer=..., 
+MPT:     importstate=<error reading variable: Cannot access memory at address 0x0>, exportstate=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     clock=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     syncflag=<error reading variable: Cannot access memory at address 0x0>, 
+MPT:     phase=0, timeout=0, timeoutflag=.FALSE., userrc=174008108, rc=174008396)
+MPT:     at /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/esmf/src/Superstructure/Component/src/ESMF_GridComp.F90:1412
+MPT: #34 0x0000000000408466 in esmapp () at esmApp.F90:78
+MPT: #35 0x0000000000407f33 in main ()
+MPT: #36 0x00002ae42a05aa35 in __libc_start_main ()
+MPT:    from /glade/u/apps/ch/os/lib64/libc.so.6
+MPT: #37 0x0000000000407e29 in _start () at ../sysdeps/x86_64/start.S:118
+MPT: (gdb) A debugging session is active.
+MPT: 
+MPT: 	Inferior 1 [process 20703] will be detached.
+MPT: 
+MPT: Quit anyway? (y or n) [answered Y; input not from terminal]
+MPT: Detaching from program: /proc/20703/exe, process 20703
+MPT: [Inferior 1 (process 20703) detached]
+
+MPT: -----stack traceback ends-----
+MPT: On host r12i6n9, Program /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/nuopc-app-prototypes/AtmOcnTransferMeshProto/esmApp, Rank 2, Process 20703: Dumping core on signal SIGSEGV(11) into directory /glade/scratch/dunlap/esmf-testing/nvhpc_22.2_mpt_g_develop/nuopc-app-prototypes/AtmOcnTransferMeshProto
+MPT ERROR: MPI_COMM_WORLD rank 2 has terminated without calling MPI_Finalize()
+	aborting job
+MPT: Received signal 11
